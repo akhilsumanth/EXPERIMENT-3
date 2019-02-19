@@ -1,0 +1,40 @@
+[System]
+Name='fuzzy logiceditor'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='food'
+Range=[0 10]
+NumMFs=2
+MF1='rancid':'gaussmf',[1.771 1.825]
+MF2='delicious':'gaussmf',[1.77 6.349]
+
+[Input2]
+Name='service'
+Range=[0 10]
+NumMFs=3
+MF1='poor':'trimf',[-4.167 0 4.167]
+MF2='good':'trimf',[0.701024867724869 4.86772486772487 9.03472486772487]
+MF3='excellent':'trimf',[5.27846560846561 9.44846560846561 13.6084656084656]
+
+[Output1]
+Name='tip'
+Range=[0 30]
+NumMFs=3
+MF1='cheap':'trimf',[-12.5 0 12.5]
+MF2='average':'trimf',[2.5 15 27.5]
+MF3='generous':'trimf',[15.715873015873 28.215873015873 40.715873015873]
+
+[Rules]
+1 1, 1 (1) : 2
+2 2, 3 (1) : 2
+0 2, 2 (1) : 2
